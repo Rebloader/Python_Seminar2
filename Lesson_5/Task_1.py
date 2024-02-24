@@ -1,12 +1,13 @@
 # Напишите функцию, которая принимает на вход строку - абсолютный путь до файла.
 # Функция возвращает кортеж из трёх элементов: путь, имя файла, расширение файла.
 
+import os
+
 
 def str_to_tuple(path):
-    *directory, full_name = path.split('\\')
-    file_name, file_format = full_name.split('.')
-    file_path = '\\'.join(directory)
-    return file_path, file_name, file_format
+    file_dir, file_name = os.path.split(path)
+    file_name, file_format = os.path.splitext(file_name)
+    return file_dir, file_name, file_format
 
 
 def main():
